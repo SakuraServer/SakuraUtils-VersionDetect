@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.syamn</groupId>
+  <artifactId>syamn-parent</artifactId>
+  <version>parent</version>
+  <packaging>pom</packaging>
+  <name>Sakura Utils</name>
+  <description>SakuraServer Plugin Utilities</description>
+  
+  <!-- Properties -->
+  <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <!-- Developer -->
+  <developers>
+      <developer>
+          <id>syamn</id>
+          <name>syam</name>
+          <email>admin@sakura-server.net</email>
+          <url>http://twitter.com/starlightp</url>
+          <organization>SakuraServer</organization>
+          <organizationUrl>http://sakura-server.net/</organizationUrl>
+      </developer>
+  </developers>
+  
+  <!-- Build Modules -->
+  <modules>
+      <module>Library</module>
+  </modules>
+  
+  <!-- CI -->
+  <ciManagement>
+      <system>jenkins</system>
+      <url>http://ci.sakura-server.net:8080/</url>
+  </ciManagement>
+  
+  <!-- Repo multiple modules will be using it -->
+  <repositories>
+      <!-- Bukkit -->
+      <repository>
+          <id>Bukkit Official</id>
+          <url>http://repo.bukkit.org/content/groups/public/</url>
+      </repository>
+  </repositories>
+  
+  <!-- Build -->
+  <build>
+      <!-- Plugins -->
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>2.3.2</version>
+          </plugin>
+      </plugins>
+  </build>
+</project>
