@@ -44,6 +44,15 @@
       </repository>
   </repositories>
   
+  <dependencies>
+      <dependency>
+          <groupId>org.bukkit</groupId>
+          <artifactId>bukkit</artifactId>
+          <version>LATEST</version>
+          <scope>provided</scope>
+      </dependency>
+  </dependencies>
+  
   <!-- Build -->
   <build>
       <!-- Plugins -->

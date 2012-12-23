@@ -5,6 +5,8 @@ package net.syamn.utils;
 
 import java.util.Collection;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * StrUtil (StrUtil.java)
@@ -265,4 +267,20 @@ public class StrUtil {
         }
         return true;
     }
+    
+    /**
+     * 文字列が有効なIPアドレスかどうか返す
+     * @param str
+     * @return
+     */
+    public static boolean isValidIP(String str){
+        if (str == null) return false;
+        Matcher matcher = Pattern.compile(IP_PATTERN).matcher(str);
+        return matcher.matches();
+    }
+    private static final String IP_PATTERN = 
+            "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 }
