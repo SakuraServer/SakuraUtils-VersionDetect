@@ -26,6 +26,7 @@
   
   <!-- Build Modules -->
   <modules>
+      <module>API</module>
       <module>Library</module>
   </modules>
   

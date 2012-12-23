@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>syamn-api</artifactId>
+  <name>Sakura Utils CraftBukkit API</name>
+  
+  <parent>
+      <groupId>net.syamn</groupId>
+      <artifactId>syamn-parent</artifactId>
+      <version>parent</version>
+  </parent>
+  
+  <!-- CI -->
+  <ciManagement>
+      <system>jenkins</system>
+      <url>http://ci.sakura-server.net:8080/</url>
+  </ciManagement>
+  
+  <dependencies>
+      <!-- Bukkit -->
+      <dependency>
+          <groupId>org.bukkit</groupId>
+          <artifactId>bukkit</artifactId>
+          <version>LATEST</version>
+          <type>jar</type>
+      </dependency>
+  </dependencies>
+</project>
