@@ -27,4 +27,14 @@ public class BlockUtil {
         
         cb.forceLightLevel(block.getWorld(), block.getX(), block.getY(), block.getZ(), level);
     }
+    
+    public static void recalculateLightLevel(Block block){
+        CraftBukkitAbstraction cb = CraftBukkitAccessor.getCB();
+        if (cb == null){
+            return;
+        }
+        
+        cb.recalculateLightLevel(block.getWorld(), block.getX(), block.getY(), block.getZ());
+        System.out.println("force calcled!");
+    }
 }
