@@ -6,7 +6,10 @@ package net.syamn.utils.craftbukkit.v1_4_6;
 
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_4_6.CraftWorld;
+import org.bukkit.craftbukkit.v1_4_6.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 
+import net.minecraft.server.v1_4_6.ChunkCoordIntPair;
 import net.minecraft.server.v1_4_6.EnumSkyBlock;
 import net.syamn.utils.craftbukkit.api.CraftBukkitAbstraction;
 
@@ -31,5 +34,13 @@ public class CraftBukkitHandler implements CraftBukkitAbstraction{
     public void recalculateLightLevel(World world, int x, int y, int z) {
         net.minecraft.server.v1_4_6.World w = ((CraftWorld) world).getHandle();
         w.z(x, y, z);
+    }
+
+    /* (非 Javadoc)
+     * @see net.syamn.utils.craftbukkit.api.CraftBukkitAbstraction#addUpdateChunkQueue(org.bukkit.entity.Player, int, int)
+     */
+    @Override
+    public void addUpdateChunkQueue(Player player, int x, int z) {
+        ((CraftPlayer) player).getHandle().chunkCoordIntPairQueue.add(new ChunkCoordIntPair(x, z));
     }
 }

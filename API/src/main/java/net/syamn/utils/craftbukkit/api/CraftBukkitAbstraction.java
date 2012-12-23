@@ -5,6 +5,7 @@
 package net.syamn.utils.craftbukkit.api;
 
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 /**
  * CraftBukkitAbstraction (CraftBukkitAbstraction.java)
@@ -13,4 +14,6 @@ import org.bukkit.World;
 public interface CraftBukkitAbstraction {
     public void forceLightLevel(World world, int x, int y, int z, int level);
     public void recalculateLightLevel(World world, int x, int y, int z);
+
+    public void addUpdateChunkQueue(Player player, int x, int z);
 }
