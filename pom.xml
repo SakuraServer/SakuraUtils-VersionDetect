@@ -28,6 +28,7 @@
   <modules>
       <module>API</module>
       <module>Library</module>
+      <module>v1_4_6</module>
   </modules>
   
   <!-- CI -->
