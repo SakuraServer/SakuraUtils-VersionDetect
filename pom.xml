@@ -27,8 +27,8 @@
   <!-- Build Modules -->
   <modules>
       <module>API</module>
-      <module>Library</module>
       <module>v1_4_6</module>
+      <module>Library</module>
   </modules>
   
   <!-- CI -->

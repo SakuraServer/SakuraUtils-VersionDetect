@@ -27,11 +27,27 @@
   </repositories>
   
   <dependencies>
+      <!-- Bukkit -->
       <dependency>
           <groupId>org.bukkit</groupId>
           <artifactId>bukkit</artifactId>
           <version>LATEST</version>
           <scope>provided</scope>
+      </dependency>
+      <!-- Other Modules -->
+      <dependency>
+          <groupId>net.syamn</groupId>
+          <artifactId>syamn-api</artifactId>
+          <version>parent</version>
+          <type>jar</type>
+          <optional>true</optional>
+      </dependency>
+      <dependency>
+          <groupId>net.syamn</groupId>
+          <artifactId>syamn-v1_4_6</artifactId>
+          <version>v1_4_6</version>
+          <type>jar</type>
+          <optional>true</optional>
       </dependency>
   </dependencies>
   
