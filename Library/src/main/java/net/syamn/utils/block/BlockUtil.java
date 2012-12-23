@@ -35,6 +35,5 @@ public class BlockUtil {
         }
         
         cb.recalculateLightLevel(block.getWorld(), block.getX(), block.getY(), block.getZ());
-        System.out.println("force calcled!");
     }
 }
