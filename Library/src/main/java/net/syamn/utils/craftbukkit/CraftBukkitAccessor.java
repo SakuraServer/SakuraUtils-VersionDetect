@@ -27,7 +27,8 @@ public class CraftBukkitAccessor {
             throw new IllegalStateException("This CraftBukkit is not versioned package.");//TODO don't throw error, use default package
         }
         
-        final Class<?> clazz = Class.forName("net.syamn.utils.craftbukkit." + ver + ".CraftBukkitHandler");
+        //final Class<?> clazz = Class.forName("net.syamn.utils.craftbukkit." + ver + ".CraftBukkitHandler");
+        final Class<?> clazz = Class.forName(plugin.getClass().getPackage().getName() + ".utils.craftbukkit." + ver + ".CraftBukkitHandler");
         
         // check clazz implementing CraftBukkitAbstraction
         if (CraftBukkitAbstraction.class.isAssignableFrom(clazz)){
