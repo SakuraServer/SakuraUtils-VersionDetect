@@ -22,7 +22,7 @@ public class BlockUtil {
     public static void forceLightLevel(Block block, int level){
         CraftBukkitAbstraction cb = CraftBukkitAccessor.getCB();
         if (cb == null){
-            return;
+            throw new IllegalStateException("CraftBukkitAbstraction is not available");
         }
         
         cb.forceLightLevel(block.getWorld(), block.getX(), block.getY(), block.getZ(), level);
@@ -31,7 +31,7 @@ public class BlockUtil {
     public static void recalculateLightLevel(Block block){
         CraftBukkitAbstraction cb = CraftBukkitAccessor.getCB();
         if (cb == null){
-            return;
+            throw new IllegalStateException("CraftBukkitAbstraction is not available");
         }
         
         cb.recalculateLightLevel(block.getWorld(), block.getX(), block.getY(), block.getZ());

@@ -22,7 +22,7 @@ import org.bukkit.entity.Player;
  */
 public class BlockUpdate {
     private final World world;
-    private final List<ChangedBlock> changedBlocks = new ArrayList<ChangedBlock>();
+    private final List<SimpleCoords> changedBlocks = new ArrayList<SimpleCoords>();
     private final CraftBukkitAbstraction cb;
     
     // set max value to min variables
@@ -32,8 +32,6 @@ public class BlockUpdate {
     private int maxX = Integer.MIN_VALUE;
     private int maxZ = Integer.MIN_VALUE;
     
-    private int changedCount = 0;
-    
     public BlockUpdate(World world){
         this.world = world;
         this.cb = CraftBukkitAccessor.getCB();
@@ -42,9 +40,9 @@ public class BlockUpdate {
         }
     }
     
-    private List<ChunkCoords> calculateChunks(){
-        List<ChunkCoords> ret = new ArrayList<ChunkCoords>();
-        if (changedCount == 0) return ret;
+    private List<SimpleCoords> calculateChunks(){
+        List<SimpleCoords> ret = new ArrayList<SimpleCoords>();
+        if (changedBlocks.size() == 0) return ret;
         
         int x0 = minX >> 4;
         int x1 = maxX >> 4;
@@ -53,25 +51,24 @@ public class BlockUpdate {
         
         for (int x = x0; x <= x1; x++){
             for (int z = z0; z <= z1; z++){
-                ret.add(new ChunkCoords(x, z));
+                ret.add(new SimpleCoords(x, z));
             }
         }
         return ret;
     }
     
-    private void sendChanges(List<ChunkCoords> affected){
+    private void sendChanges(List<SimpleCoords> affected){
         int limit = Bukkit.getServer().getViewDistance() << 4;
-        int x0 = minX - limit;
-        int x1 = maxX + limit;
-        int z0 = minZ - limit;
-        int z1 = maxZ + limit;
+        
+        int x0 = minX - limit; int z0 = minZ - limit;
+        int x1 = maxX + limit; int z1 = maxZ + limit;
         
         for (Player player : world.getPlayers()){
             Location loc = player.getLocation();
             int x = loc.getBlockX();
             int z = loc.getBlockZ();
             if (x >= x0 && x <= x1 && z >= z0 && z <= z1){
-                for (ChunkCoords pair : affected){
+                for (SimpleCoords pair : affected){
                     cb.addUpdateChunkQueue(player, pair.x, pair.z);
                 }
             }
@@ -79,13 +76,14 @@ public class BlockUpdate {
     }
     
     public void notifyClients(){
-        List<ChunkCoords> affected = calculateChunks();
+        List<SimpleCoords> affected = calculateChunks();
         if (!affected.isEmpty()){
             sendChanges(affected);
-            changedCount = 0;
-            minX = minZ = Integer.MAX_VALUE;
-            maxX = maxZ = Integer.MIN_VALUE;
         }
+        
+        changedBlocks.clear();
+        minX = minZ = Integer.MAX_VALUE;
+        maxX = maxZ = Integer.MIN_VALUE;
     }
     
     public void addChangedBlock(Block block){
@@ -97,26 +95,14 @@ public class BlockUpdate {
         minZ = Math.min(minZ, z);
         maxZ = Math.max(maxZ, z);
         
-        changedCount++;
-        changedBlocks.add(new ChangedBlock(x, block.getY(), z, block.getTypeId()));
+        changedBlocks.add(new SimpleCoords(x, z));
     }
     
-    private class ChunkCoords{
-        public final int x, z;
-        public ChunkCoords(int x, int z){
+    private class SimpleCoords{
+        final int x, z;
+        public SimpleCoords(int x, int z){
             this.x = x;
             this.z = z;
-        }
-    }
-    private class ChangedBlock{
-        public final int x, y, z;
-        public final int id;
-        
-        public ChangedBlock(int x, int y, int z, int id){
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.id = id;
         }
     }
 }

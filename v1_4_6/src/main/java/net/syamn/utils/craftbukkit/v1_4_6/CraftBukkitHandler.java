@@ -39,6 +39,7 @@ public class CraftBukkitHandler implements CraftBukkitAbstraction{
     /* (非 Javadoc)
      * @see net.syamn.utils.craftbukkit.api.CraftBukkitAbstraction#addUpdateChunkQueue(org.bukkit.entity.Player, int, int)
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void addUpdateChunkQueue(Player player, int x, int z) {
         ((CraftPlayer) player).getHandle().chunkCoordIntPairQueue.add(new ChunkCoordIntPair(x, z));
