@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.syamn</groupId>
   <artifactId>syamn-lib</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>Sakura Utils Library</name>
   <description>SakuraServer Plugin Utilities Library</description>
   
