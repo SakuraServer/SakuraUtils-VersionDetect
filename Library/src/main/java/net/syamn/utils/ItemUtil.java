@@ -43,7 +43,7 @@ public class ItemUtil {
      * @param id
      * @return
      */
-    public boolean repairable(final int id){
+    public static boolean repairable(final int id){
         return possibleRepairs.contains(id);
     }
 }
