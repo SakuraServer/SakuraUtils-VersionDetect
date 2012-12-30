@@ -4,6 +4,7 @@
  */
 package net.syamn.utils.craftbukkit.api;
 
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
@@ -13,7 +14,14 @@ import org.bukkit.entity.Player;
  */
 public interface CraftBukkitAbstraction {
     public void forceLightLevel(World world, int x, int y, int z, int level);
+    
     public void recalculateLightLevel(World world, int x, int y, int z);
 
     public void addUpdateChunkQueue(Player player, int x, int z);
+    
+    public void sendPacket(Player player, Object packet);
+
+    public void sendPacketToOnline(Object... packets);
+    
+    //public void sendPacketNearby(Location location, Object packet, double radius);
 }
